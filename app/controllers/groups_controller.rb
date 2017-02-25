@@ -9,13 +9,11 @@ end
 
 def edit
   @group = Group.find(params[:id])
-end 
+end
 
 def new
   @group = Group.new
 end
-
-
 
 def create
   @group = Group.new(group_params)
@@ -23,6 +21,13 @@ def create
 
   redirect_to groups_path
 end
+
+def update
+  @group = Group.find(params[:id])
+  @group.update(group_params)
+
+  redirect_to groups_path, notice:"Update Success!"
+end 
 
 private
 
