@@ -8,6 +8,7 @@ before_action :find_group_and_check_permission, only:[:edit,:update, :destroy]
 
 def show
     @group = Group.find(params[:id])
+    @posts = @group.posts
 end
 
 def edit
@@ -38,7 +39,7 @@ def update
 end
 
 def destroy
-  
+
   @group.destroy
   flash[:alert] = "Group deleted."
   redirect_to groups_path
